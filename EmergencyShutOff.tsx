@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { PowerOff, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { emergencyShutOff as shutOffAction } from '@/app/actions';
+// import { emergencyShutOff as shutOffAction } from '@/app/actions';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -21,27 +21,32 @@ export const EmergencyShutOff: React.FC = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleShutOff = async () => {
+  const handleShutOff = () => {
     setIsSubmitting(true);
     try {
-      const result = await shutOffAction();
-      if (result.success) {
-        toast({
-          title: "Success",
-          description: result.message,
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Error",
-          description: result.message || "Failed to send shut-off signal.",
-        });
-      }
+      // const result = await shutOffAction();
+      // if (result.success) {
+      //   toast({
+      //     title: "Success",
+      //     description: result.message,
+      //   });
+      // } else {
+      //   toast({
+      //     variant: "destructive",
+      //     title: "Error",
+      //     description: result.message || "Failed to send shut-off signal.",
+      //   });
+      // }
+      toast({
+        title: 'Feature Disabled',
+        description:
+          'Emergency shut-off is not available in this front-end only mode.',
+      });
     } catch (error) {
       toast({
-        variant: "destructive",
-        title: "Error",
-        description: "An unexpected error occurred.",
+        variant: 'destructive',
+        title: 'Error',
+        description: 'An unexpected error occurred.',
       });
     } finally {
       setIsSubmitting(false);
